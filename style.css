@@ -2826,12 +2826,13 @@ textarea:focus-visible {
 /* ── Fullscreen НН hero ── */
 .hero-fullscreen {
   position: relative;
-  background: url('images/hero-poster.jpg') center / cover no-repeat;
+  background: #0d0505;
   border-bottom: none;
   padding: 0;
   overflow: hidden;
 }
 
+.hero-fs-poster,
 .hero-fs-video {
   position: absolute;
   inset: 0;
