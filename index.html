@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://donskikh-realty.ru/">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%238B1A1A'/><text x='50' y='72' font-size='72' font-family='serif' fill='white' text-anchor='middle'>Д</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%238B1A1A'/><text x='50' y='50' dy='.35em' font-size='64' font-family='Georgia,serif' fill='white' text-anchor='middle'>Д</text></svg>">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -160,15 +160,15 @@
 
       <div class="hero-bb-stats hero-fs-stats">
         <div class="hero-bb-stat">
-          <span class="stat-num hero-fs-stat-num">7</span>
+          <span class="stat-num hero-fs-stat-num" data-count="7" data-suffix="">7</span>
           <span class="stat-label hero-fs-stat-label">лет на рынке</span>
         </div>
         <div class="hero-bb-stat">
-          <span class="stat-num hero-fs-stat-num">300+</span>
+          <span class="stat-num hero-fs-stat-num" data-count="300" data-suffix="+">300+</span>
           <span class="stat-label hero-fs-stat-label">сделок</span>
         </div>
         <div class="hero-bb-stat">
-          <span class="stat-num hero-fs-stat-num">0</span>
+          <span class="stat-num hero-fs-stat-num" data-count="0" data-suffix="">0</span>
           <span class="stat-label hero-fs-stat-label">двойных комиссий</span>
         </div>
       </div>
@@ -235,6 +235,44 @@
     <div class="container">
       <h2 class="section-title reveal">Чем могу помочь</h2>
       <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- Ипотечный калькулятор -->
+  <section class="section-light">
+    <div class="container">
+      <h2 class="section-title reveal">Рассчитайте ипотеку</h2>
+      <p class="section-subtitle reveal" style="text-align:center;color:var(--text-secondary);margin-bottom:0;">Примерный расчёт — точные условия обсудим на консультации</p>
+      <div class="calculator-wrap">
+        <div class="calc-inputs reveal">
+          <label>Стоимость квартиры, ₽
+            <input type="number" id="calc-price" value="5000000" min="100000" step="100000">
+          </label>
+          <label>Первоначальный взнос, ₽
+            <input type="number" id="calc-down" value="1000000" min="0" step="100000">
+          </label>
+          <label>Срок кредита
+            <input type="range" id="calc-term" min="1" max="30" value="20" class="calc-range">
+            <span class="calc-range-val" id="calc-term-val">20 лет</span>
+          </label>
+          <label>Процентная ставка
+            <input type="range" id="calc-rate" min="1" max="25" value="9" step="0.1" class="calc-range">
+            <span class="calc-range-val" id="calc-rate-val">9.0%</span>
+          </label>
+        </div>
+        <div class="calc-result reveal stagger-2">
+          <div class="calc-payment">
+            <div class="calc-payment-label">Ежемесячный платёж</div>
+            <div class="calc-payment-value" id="calc-payment">—</div>
+          </div>
+          <div class="calc-breakdown">
+            <div class="calc-row"><span>Сумма кредита</span><span id="calc-loan">—</span></div>
+            <div class="calc-row"><span>Переплата</span><span id="calc-overpay">—</span></div>
+            <div class="calc-row"><span>Всего выплат</span><span id="calc-total">—</span></div>
+          </div>
+          <a href="contact.html" class="btn btn-primary" style="display:block;text-align:center;margin-top:28px;">Обсудить условия ипотеки</a>
+        </div>
+      </div>
     </div>
   </section>
 

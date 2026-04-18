@@ -493,6 +493,69 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
+  // ---------- CountUp animation ----------
+  const countUpEls = document.querySelectorAll('[data-count]');
+  if (countUpEls.length > 0) {
+    function animateCountUp(el) {
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1600;
+      const start = performance.now();
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(easeOut(progress) * target) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+    const countObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCountUp(entry.target);
+          countObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    countUpEls.forEach(el => countObs.observe(el));
+  }
+
+  // ---------- Mortgage calculator ----------
+  const calcPrice = document.getElementById('calc-price');
+  const calcDown = document.getElementById('calc-down');
+  const calcTerm = document.getElementById('calc-term');
+  const calcRate = document.getElementById('calc-rate');
+  if (calcPrice && calcTerm && calcRate) {
+    function fmtMoney(n) {
+      return Math.round(n).toLocaleString('ru-RU') + ' ₽';
+    }
+    function calcMortgage() {
+      const price = parseFloat(calcPrice.value) || 0;
+      const down = parseFloat(calcDown.value) || 0;
+      const term = parseInt(calcTerm.value) || 1;
+      const annualRate = parseFloat(calcRate.value) || 0;
+      document.getElementById('calc-term-val').textContent = term + ' ' + (term === 1 ? 'год' : term < 5 ? 'года' : 'лет');
+      document.getElementById('calc-rate-val').textContent = annualRate.toFixed(1) + '%';
+      const loan = Math.max(0, price - down);
+      document.getElementById('calc-loan').textContent = fmtMoney(loan);
+      if (loan <= 0 || annualRate <= 0) {
+        document.getElementById('calc-payment').textContent = '—';
+        document.getElementById('calc-overpay').textContent = '—';
+        document.getElementById('calc-total').textContent = '—';
+        return;
+      }
+      const r = annualRate / 100 / 12;
+      const n = term * 12;
+      const payment = loan * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      const totalPay = payment * n;
+      document.getElementById('calc-payment').textContent = fmtMoney(payment);
+      document.getElementById('calc-overpay').textContent = fmtMoney(totalPay - loan);
+      document.getElementById('calc-total').textContent = fmtMoney(totalPay);
+    }
+    [calcPrice, calcDown, calcTerm, calcRate].forEach(el => el.addEventListener('input', calcMortgage));
+    calcMortgage();
+  }
+
   // ---------- FAQ accordion ----------
   document.querySelectorAll('.faq-question').forEach(function(q) {
     var answer = q.nextElementSibling;
