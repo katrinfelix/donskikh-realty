@@ -132,6 +132,21 @@
       height: 32px;
       color: var(--neutral-400);
     }
+    .team-monogram {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      flex-shrink: 0;
+    }
     .team-card h3 {
       font-family: var(--font-heading);
       font-size: 1.0625rem;
@@ -385,14 +400,14 @@
         </div>
 
         <div class="team-card reveal stagger-2">
-          <img src="images/team-lawyer.jpg" alt="Юрист АН Донских" class="team-card-photo">
+          <div class="team-monogram" style="background:#2C3E50;">Ю</div>
           <h3>Юрист</h3>
           <div class="team-card-role">Юридическое сопровождение</div>
           <p>Проверяет документы, разбирает сложные ситуации: опека, маткапитал, наследство.</p>
         </div>
 
         <div class="team-card reveal stagger-3">
-          <img src="images/team-agent.jpg" alt="Агент АН Донских" class="team-card-photo">
+          <div class="team-monogram" style="background:#5D4037;">А</div>
           <h3>Агенты</h3>
           <div class="team-card-role">Сопровождение клиентов</div>
           <p>Ведут от первого показа до подписания. Один агент — одна сделка.</p>
