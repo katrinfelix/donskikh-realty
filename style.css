@@ -2847,9 +2847,9 @@ textarea:focus-visible {
   inset: 0;
   background: linear-gradient(
     105deg,
-    rgba(15, 5, 5, 0.90) 0%,
-    rgba(15, 5, 5, 0.72) 52%,
-    rgba(15, 5, 5, 0.28) 100%
+    rgba(10, 4, 4, 0.96) 0%,
+    rgba(10, 4, 4, 0.82) 45%,
+    rgba(10, 4, 4, 0.35) 100%
   );
   z-index: 1;
 }
@@ -2869,8 +2869,8 @@ textarea:focus-visible {
 
 .hero-fs-name {
   color: #fff !important;
-  font-size: clamp(44px, 5.5vw, 72px);
-  text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+  font-size: clamp(52px, 6.5vw, 88px);
+  text-shadow: 0 2px 32px rgba(0,0,0,0.6);
 }
 
 .hero-fs-tagline {
