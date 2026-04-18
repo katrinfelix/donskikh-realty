@@ -166,34 +166,38 @@
   <script src="data.js"></script>
   <script src="script.js"></script>
   <script>
-    // ── Formspree config ─────────────────────────────────────────────────
-    // Регистрация: formspree.io → New Form → ввести ksdonskih@yandex.ru
-    // Получить ID формы (вида xabcdefg) и вставить ниже:
-    var FORMSPREE_ID = 'REPLACE_WITH_FORM_ID';
-    // ─────────────────────────────────────────────────────────────────────
+    var TG_TOKEN   = '8684180896:AAENpJJVU_6jQhwdLTjUE-sxWvMb-YF49aE';
+    var TG_CHAT_ID = '6213426240';
+
+    var SITUATIONS = { buy: 'Куплю', sell: 'Продам', invest: 'Инвестирую', other: 'Другое' };
 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var form = this;
       var btn  = form.querySelector('button[type=submit]');
+      var name      = form.querySelector('#name').value.trim();
+      var phone     = form.querySelector('#phone').value.trim();
+      var situation = form.querySelector('#situation').value;
+      var message   = form.querySelector('#message').value.trim();
 
       btn.disabled = true;
       btn.textContent = 'Отправляем…';
 
-      var data = new FormData(form);
+      var text = '🏠 *Новая заявка с сайта*\n\n'
+        + '👤 ' + name + '\n'
+        + '📞 ' + phone + '\n'
+        + '📋 ' + (SITUATIONS[situation] || situation)
+        + (message ? '\n💬 ' + message : '');
 
-      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: text, parse_mode: 'Markdown' })
       })
-      .then(function(r) {
-        if (r.ok) {
-          var parent = form.parentElement;
-          parent.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка отправлена!</h3><p>Ксения перезвонит вам в течение 15 минут в рабочее время.</p></div>';
-        } else {
-          throw new Error('error');
-        }
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d.ok) throw new Error();
+        form.parentElement.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка отправлена!</h3><p>Ксения перезвонит вам в течение 15 минут в рабочее время.</p></div>';
       })
       .catch(function() {
         btn.disabled = false;
