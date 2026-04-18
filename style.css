@@ -2826,7 +2826,7 @@ textarea:focus-visible {
 /* ── Fullscreen НН hero ── */
 .hero-fullscreen {
   position: relative;
-  background: #0d0505;
+  background: url('images/hero-poster.jpg') center / cover no-repeat;
   border-bottom: none;
   padding: 0;
   overflow: hidden;
