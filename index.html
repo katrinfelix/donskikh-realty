@@ -124,20 +124,13 @@
 
   <!-- 2. Hero — fullscreen video -->
   <section class="hero-bb hero-fullscreen">
-    <video class="hero-fs-video" id="heroVideo" autoplay muted loop playsinline preload="auto" style="opacity:0;transition:opacity 1s ease">
+    <video class="hero-fs-video" id="heroVideo" autoplay muted loop playsinline preload="auto" style="opacity:0;transition:opacity 1.5s ease">
       <source src="images/hero-video.mp4" type="video/mp4">
     </video>
     <script>
       (function(){
         var v = document.getElementById('heroVideo');
-        function showVideo() {
-          if (v.currentTime >= 0.5) {
-            v.style.opacity = 1;
-            v.removeEventListener('timeupdate', showVideo);
-          }
-        }
-        v.addEventListener('canplay', function(){ v.currentTime = 0.5; });
-        v.addEventListener('timeupdate', showVideo);
+        v.addEventListener('canplay', function(){ setTimeout(function(){ v.style.opacity = 1; }, 300); }, {once:true});
       })();
     </script>
     <div class="hero-fs-overlay"></div>
