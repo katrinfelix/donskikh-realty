@@ -2093,6 +2093,9 @@ section {
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-form h3 {
