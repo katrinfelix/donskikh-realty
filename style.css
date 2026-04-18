@@ -2585,7 +2585,7 @@ section {
 /* ---------- Back to Top Button ---------- */
 .back-to-top {
   position: fixed;
-  bottom: 96px;
+  bottom: 168px;
   right: 28px;
   z-index: 900;
   width: 44px;
