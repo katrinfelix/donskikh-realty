@@ -245,6 +245,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) metaDesc.content = article.excerpt;
 
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.href = 'https://donskikh-realty.ru/article.html?id=' + article.id;
+      const ogImg = document.querySelector('meta[property="og:image"]');
+      if (ogImg && article.image) ogImg.content = article.image;
+
       const headerEl = document.getElementById('article-header-content');
       if (headerEl) {
         headerEl.innerHTML = `
@@ -487,6 +492,20 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
   }
+
+  // ---------- FAQ accordion ----------
+  document.querySelectorAll('.faq-question').forEach(function(q) {
+    var answer = q.nextElementSibling;
+    if (!answer || !answer.classList.contains('faq-answer')) return;
+    answer.style.display = 'none';
+    q.style.cursor = 'pointer';
+    q.addEventListener('click', function() {
+      var open = answer.style.display !== 'none';
+      document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.display = 'none'; });
+      document.querySelectorAll('.faq-question').forEach(function(qq) { qq.classList.remove('faq-open'); });
+      if (!open) { answer.style.display = 'block'; q.classList.add('faq-open'); }
+    });
+  });
 
 });
 

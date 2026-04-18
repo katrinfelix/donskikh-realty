@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /article.html?*
+Disallow: /object.html?*
+
+Sitemap: https://katrinfelix.github.io/donskikh-realty/sitemap.xml

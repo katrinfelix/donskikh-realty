@@ -2030,6 +2030,57 @@ section {
   line-height: 1.6;
 }
 
+/* ---------- Catalog Filters ---------- */
+.filters-section {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-light);
+  padding: 20px 0;
+  position: sticky;
+  top: var(--header-h);
+  z-index: 90;
+}
+.filters-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filters-form select,
+.filters-form input[type="number"] {
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition);
+  min-width: 160px;
+}
+.filters-form input[type="number"] { min-width: 130px; }
+.filters-form select:focus,
+.filters-form input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.filters-reset {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  padding: 0 12px;
+  height: 44px;
+}
+.filters-reset:hover { color: var(--primary); }
+@media (max-width: 768px) {
+  .filters-section { position: static; }
+  .filters-form { gap: 8px; }
+  .filters-form select,
+  .filters-form input[type="number"] { min-width: calc(50% - 4px); flex: 1; }
+  .filters-reset { margin-left: 0; width: 100%; }
+}
+
 /* ---------- Contact Page ---------- */
 .contact-grid {
   display: grid;
