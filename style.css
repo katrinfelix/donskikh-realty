@@ -3047,10 +3047,21 @@ textarea:focus-visible {
 
 @media (max-width: 768px) {
   .hero-bb { padding: 48px 24px; min-height: auto; }
+  .hero-fullscreen { padding: 0; min-height: 100svh; }
   .hero-bb-stats { gap: 24px; padding-top: 24px; margin-bottom: 36px; }
   .hero-bb-stat .stat-num { font-size: 32px; }
   .hero-bb-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
   .hero-bb-ctas .btn { width: 100%; }
   .hero-bb-divider { margin: 20px 0; }
   .hero-bb-tagline { margin-bottom: 32px; }
+
+  .hero-fs-content {
+    margin: 0;
+    padding: calc(var(--header-h) + 48px) 24px 72px;
+    max-width: 100%;
+  }
+  .hero-fs-name { font-size: 36px !important; }
+  .hero-fs-tagline { font-size: 16px !important; }
+  .hero-fs-stats { gap: 20px; }
+  .hero-fs-stat-num { font-size: 28px !important; }
 }
