@@ -1235,6 +1235,8 @@ section {
   border: 1px solid var(--border-light);
   transition: border-color var(--transition);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .review-card:hover {
@@ -1291,6 +1293,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: end;
+  margin-top: auto;
 }
 
 .review-name {
@@ -2479,9 +2482,10 @@ section {
   .hero-ctas .btn { width: 100%; }
 
   .mobile-cta-bar { display: flex; }
-  .float-telegram { bottom: 80px; right: 16px; width: 48px; height: 48px; }
-  .float-telegram svg { width: 24px; height: 24px; }
-  .float-telegram .tooltip { display: none; }
+  .float-buttons { bottom: 80px; right: 16px; gap: 10px; }
+  .float-telegram, .float-vkmax { width: 48px; height: 48px; }
+  .float-telegram svg, .float-vkmax svg { width: 24px; height: 24px; }
+  .float-telegram .tooltip, .float-vkmax .tooltip { display: none; }
   .back-to-top { bottom: 140px; right: 16px; width: 40px; height: 40px; }
 }
 
@@ -2505,26 +2509,43 @@ section {
 .property-badge.deal { background: #52c41a; }
 
 /* ---------- Floating Telegram Button ---------- */
-.float-telegram {
+.float-buttons {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.float-telegram,
+.float-vkmax {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #0088cc;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.float-telegram {
+  background: #0088cc;
+  box-shadow: 0 4px 16px rgba(0,136,204,0.4);
   animation: floatPulse 3s ease-in-out infinite;
 }
 
-.float-telegram:hover {
+.float-vkmax {
+  background: #0077ff;
+  box-shadow: 0 4px 16px rgba(0,119,255,0.4);
+}
+
+.float-telegram:hover,
+.float-vkmax:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
 }
 
 .float-telegram svg {
@@ -2557,8 +2578,8 @@ section {
 }
 
 @keyframes floatPulse {
-  0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
-  50% { box-shadow: 0 4px 24px rgba(37,211,102,0.55); }
+  0%, 100% { box-shadow: 0 4px 16px rgba(0,136,204,0.4); }
+  50% { box-shadow: 0 4px 24px rgba(0,136,204,0.6); }
 }
 
 /* ---------- Back to Top Button ---------- */
