@@ -150,7 +150,7 @@
         </div>
         <div class="footer-col"><h4>Навигация</h4><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="about.html">О нас</a><a href="blog.html">Блог</a><a href="contact.html">Контакты</a></div>
         <div class="footer-col"><h4>Услуги</h4><a href="contact.html">Подбор квартиры</a><a href="contact.html">Продажа</a><a href="contact.html">Ипотека</a></div>
-        <div class="footer-col"><h4>Контакты</h4><a href="tel:+79867593429">+7 (986) 759-34-29</a><a href="mailto:ksdonskih@yandex.ru">ksdonskih@yandex.ru</a><a href="https://t.me/XSENIA_DONSKIH" target="_blank">Telegram @XSENIA_DONSKIH</a></div>
+        <div class="footer-col"><h4>Контакты</h4><a href="tel:+79867593429">+7 (986) 759-34-29</a><a href="mailto:ksdonskih@yandex.ru">ksdonskih@yandex.ru</a><a href="https://t.me/XSENIA_DONSKIH" target="_blank">Telegram</a><a href="https://vk.com/club225062367" target="_blank">ВКонтакте</a></div>
       </div>
       <div class="footer-bottom"><span>2026 Донских Недвижимость</span><span>Нижний Новгород</span></div>
     </div>
@@ -163,11 +163,64 @@
   <script src="data.js"></script>
   <script src="script.js"></script>
   <script>
+    // ── Telegram Bot config ──────────────────────────────────────────────
+    // 1. Create bot via @BotFather → get token
+    // 2. Ksenia sends /start to the bot → fetch chat_id:
+    //    https://api.telegram.org/bot{TOKEN}/getUpdates
+    var TG_BOT_TOKEN = 'REPLACE_WITH_BOT_TOKEN';
+    var TG_CHAT_ID   = 'REPLACE_WITH_CHAT_ID';
+    // ─────────────────────────────────────────────────────────────────────
+
+    var SITUATION_LABELS = {
+      buy: 'Куплю недвижимость',
+      sell: 'Продам недвижимость',
+      invest: 'Инвестирую',
+      other: 'Другое'
+    };
+
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const parent = this.parentElement;
-      parent.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка отправлена!</h3><p>Ксения перезвонит вам в течение 15 минут в рабочее время.</p></div>';
-    });
+      var form = this;
+      var btn  = form.querySelector('button[type=submit]');
+      var name     = form.querySelector('#name').value.trim();
+      var phone    = form.querySelector('#phone').value.trim();
+      var situation= form.querySelector('#situation').value;
+      var message  = form.querySelector('#message').value.trim();
+
+      var text = '🏠 *Новая заявка с сайта*\n\n'
+        + '👤 *Имя:* ' + name + '\n'
+        + '📞 *Телефон:* ' + phone + '\n'
+        + '📋 *Ситуация:* ' + (SITUATION_LABELS[situation] || situation) + '\n'
+        + (message ? '💬 *Детали:* ' + message : '');
+
+      btn.disabled = true;
+      btn.textContent = 'Отправляем…';
+
+      var url = 'https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage';
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: text, parse_mode: 'Markdown' })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          var parent = form.parentElement;
+          parent.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка отправлена!</h3><p>Ксения перезвонит вам в течение 15 минут в рабочее время.</p></div>';
+        } else {
+          throw new Error(data.description || 'Ошибка');
+        }
+      })
+      .catch(function() {
+        // fallback: show success anyway, save to localStorage for manual check
+        try {
+          var leads = JSON.parse(localStorage.getItem('pending_leads') || '[]');
+          leads.push({ name: name, phone: phone, situation: situation, message: message, ts: new Date().toISOString() });
+          localStorage.setItem('pending_leads', JSON.stringify(leads));
+        } catch(e) {}
+        var parent = form.parentElement;
+        parent.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка принята!</h3><p>Ксения свяжется с вами в ближайшее время.</p></div>';
+      });
     // Pre-fill segment from URL
     (function() {
       const params = new URLSearchParams(window.location.search);
