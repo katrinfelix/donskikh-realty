@@ -13,6 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Контакты - Донских Недвижимость">
   <meta property="og:description" content="Свяжитесь с Ксенией Донских - риелтором в Нижнем Новгороде.">
+  <meta property="og:image" content="https://katrinfelix.github.io/donskikh-realty/images/hero-poster.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -199,6 +200,8 @@
         btn.textContent = 'Отправить заявку';
         alert('Не удалось отправить. Позвоните напрямую: +7 (986) 759-34-29');
       });
+    }); // end addEventListener submit
+
     // Pre-fill segment from URL
     (function() {
       const params = new URLSearchParams(window.location.search);

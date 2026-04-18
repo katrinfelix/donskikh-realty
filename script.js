@@ -551,8 +551,12 @@ function renderPropertyCard(p, index) {
 function getBadgeClass(badge) {
   const map = {
     'Premium': 'premium',
+    'Премиум': 'premium',
     'Инвестиция': 'investment',
+    'Под арендный бизнес': 'investment',
     'Новый': 'new',
+    'Новое': 'new',
+    'Эксклюзив': 'premium',
     'Для семьи': 'family',
     'Хит продаж': 'hit',
     'Первая покупка': 'first',
