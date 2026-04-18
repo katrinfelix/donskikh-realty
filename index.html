@@ -64,6 +64,20 @@
       margin-top: 40px;
     }
 
+    /* равная высота карточек — результат всегда внизу */
+    .cases-grid-3 .case-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .cases-grid-3 .case-card .case-result {
+      margin-top: auto;
+    }
+    /* плашки одинаковой ширины */
+    .cases-grid-3 .case-badge {
+      display: block;
+      width: fit-content;
+    }
+
     /* --- Номер кейса - маленький inline --- */
     .case-num-inline {
       font-family: var(--font);
