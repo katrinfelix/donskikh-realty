@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас - АН Донских, агентство недвижимости в Нижнем Новгороде</title>
+  <meta name="description" content="АН Донских - агентство недвижимости в Нижнем Новгороде. 7 лет опыта основателя, 300+ сделок, юрист в команде. Сложные случаи - наш профиль.">
+  <link rel="canonical" href="https://donskikh-realty.ru/about.html">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%238B1A1A'/><text y='.9em' font-size='80' font-family='serif' fill='white' x='10'>Д</text></svg>">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="О нас - АН Донских, агентство недвижимости в Нижнем Новгороде">
+  <meta property="og:description" content="7 лет опыта, 300+ сделок, юрист в команде. Один агент до ключей. Без двойных комиссий.">
+  <meta property="og:locale" content="ru_RU">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "АН Донских",
+    "description": "Агентство недвижимости в Нижнем Новгороде. 7 лет опыта, 300+ сделок, юрист в команде.",
+    "url": "https://donskikh-realty.ru",
+    "telephone": "+79867593429",
+    "email": "ksdonskih@yandex.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Нижний Новгород",
+      "addressRegion": "Нижегородская область",
+      "addressCountry": "RU"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Ксения Донских"
+    }
+  }
+  </script>
+
+  <style>
+    /* --- Цифры агентства - ТЁМНАЯ секция --- */
+    .numbers-section {
+      background: var(--dark-warm);
+      color: var(--white);
+      padding: 120px 0;
+    }
+    .numbers-section h2 {
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .numbers-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .number-item {
+      text-align: center;
+      padding: 40px 24px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background var(--transition);
+    }
+    .number-item:last-child {
+      border-right: none;
+    }
+    .number-item:hover {
+      background: rgba(255,255,255,0.03);
+    }
+    .number-value {
+      font-family: var(--font-heading);
+      font-size: clamp(2.25rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--primary-bg);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .number-label {
+      font-family: var(--font);
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* --- Команда - компактная секция --- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .team-card {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      transition: border-color var(--transition);
+    }
+    .team-card:hover {
+      border-color: var(--neutral-300);
+    }
+    .team-card-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .team-card-photo-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--neutral-100);
+      border: 1px solid var(--border-light);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .team-card-photo-placeholder svg {
+      width: 32px;
+      height: 32px;
+      color: var(--neutral-400);
+    }
+    .team-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .team-card-role {
+      font-family: var(--font);
+      font-size: 0.8125rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .team-card p {
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* --- Экспертиза теги --- */
+    .expertise-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    .expertise-tag {
+      background: var(--neutral-50);
+      border: 1px solid var(--border-light);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-family: var(--font);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+    .expertise-tag:hover {
+      background: var(--primary-bg);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* --- Hero типографический (без фото) --- */
+    .about-hero-typographic {
+      padding: 72px 0 96px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .about-hero-inner {
+      max-width: 960px;
+    }
+    .about-hero-inner h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 20px 0 32px;
+      color: var(--text);
+    }
+    .about-hero-inner .lead {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+      line-height: 1.5;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+    .about-hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-light);
+    }
+    .about-hero-meta .meta-col p {
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* --- Процесс - 7 шагов --- */
+    .process-steps-7 {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 40px;
+    }
+    .process-step-7 {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border-light);
+      align-items: start;
+    }
+    .process-step-7:last-child {
+      border-bottom: none;
+    }
+    .step-num-7 {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .step-content-7 h3 {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .step-content-7 p {
+      font-family: var(--font);
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .numbers-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .numbers-grid-4 .number-item:nth-child(2) { border-right: none; }
+      .numbers-grid-4 .number-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .numbers-grid-4 .number-item:nth-child(1),
+      .numbers-grid-4 .number-item:nth-child(2) {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .team-grid { grid-template-columns: 1fr; gap: 16px; }
+      .about-hero-meta { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 768px) {
+      .numbers-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .process-step-7 { grid-template-columns: 44px 1fr; gap: 16px; }
+      .about-hero-typographic { padding: 56px 0 72px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-wordmark">ДОНСКИХ</span>
+        <span class="logo-sub">Недвижимость</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html" class="active">О&nbsp;нас</a>
+        <a href="blog.html">Блог</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+      <a href="tel:+79867593429" class="header-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +7&nbsp;(986)&nbsp;759-34-29
+      </a>
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="about.html">О нас</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html">Контакты</a>
+    <a href="tel:+79867593429" style="color: var(--primary);">+7 (986) 759-34-29</a>
+    <a href="contact.html" class="btn btn-primary">Оставить заявку</a>
+  </div>
+
+  <!-- 2. Hero - типографический -->
+  <section class="about-hero about-hero-typographic">
+    <div class="container">
+      <div class="about-hero-inner reveal">
+        <h1>Агентство недвижимости<br>в&nbsp;Нижнем&nbsp;Новгороде</h1>
+        <p class="lead">Берём любые сделки — от покупки первой квартиры до международных расчётов. Команда с 2024 года, Ксения в профессии с 2019.</p>
+        <div class="about-hero-meta">
+          <div class="meta-col">
+            <p>АН Донских — это весь цикл: подбор, юридическая проверка, сделка, регистрация. Один агент, один путь.</p>
+          </div>
+          <div class="meta-col">
+            <p>Юрист в команде — берём то, от чего другие отказываются: маткапитал, опека, обременения.</p>
+          </div>
+          <div class="meta-col">
+            <p>Каждого клиента ведёт один агент. Не перебрасываем между менеджерами.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Цифры - тёмная секция -->
+  <section class="numbers-section">
+    <div class="container">
+      <h2 class="reveal">АН Донских в цифрах</h2>
+      <div class="numbers-grid-4">
+
+        <div class="number-item reveal stagger-1">
+          <div class="number-value">7 лет</div>
+          <div class="number-label">опыта основателя на рынке Нижнего Новгорода</div>
+        </div>
+
+        <div class="number-item reveal stagger-2">
+          <div class="number-value">300+</div>
+          <div class="number-label">закрытых сделок</div>
+        </div>
+
+        <div class="number-item reveal stagger-3">
+          <div class="number-value">0</div>
+          <div class="number-label">двойных комиссий с обеих сторон</div>
+        </div>
+
+        <div class="number-item reveal stagger-4">
+          <div class="number-value">24 ч</div>
+          <div class="number-label">оценка квартиры по реальным сделкам</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Команда -->
+  <section class="section-white">
+    <div class="container">
+      <h2 class="section-title reveal">Команда</h2>
+      <div class="team-grid">
+
+        <div class="team-card reveal stagger-1">
+          <img src="images/ksenia-5.jpg" alt="Ксения Донских - основатель АН Донских" class="team-card-photo">
+          <h3>Ксения Донских</h3>
+          <div class="team-card-role">Основатель</div>
+          <p>Основатель агентства. 7 лет на рынке Нижнего Новгорода, 300+ сделок. Член НГСР.</p>
+        </div>
+
+        <div class="team-card reveal stagger-2">
+          <div class="team-card-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Юрист</h3>
+          <div class="team-card-role">Юридическое сопровождение</div>
+          <p>Проверяет документы, разбирает сложные ситуации: опека, маткапитал, наследство.</p>
+        </div>
+
+        <div class="team-card reveal stagger-3">
+          <div class="team-card-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Агенты</h3>
+          <div class="team-card-role">Сопровождение клиентов</div>
+          <p>Ведут от первого показа до подписания. Один агент — одна сделка.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Как мы ведём сделку - 7 этапов -->
+  <section class="section-light">
+    <div class="container">
+      <h2 class="section-title reveal">Как устроена каждая сделка</h2>
+      <div class="process-steps-7">
+
+        <div class="process-step-7 reveal stagger-1">
+          <div class="step-num-7">1</div>
+          <div class="step-content-7">
+            <h3>Консультация (30 минут, бесплатно)</h3>
+            <p>Рассказываете ситуацию. Если не беремся - говорим прямо и куда обратиться.</p>
+          </div>
+        </div>
+
+        <div class="process-step-7 reveal stagger-2">
+          <div class="step-num-7">2</div>
+          <div class="step-content-7">
+            <h3>Оценка квартиры</h3>
+            <p>Выезд агента, оценка квартиры, проверка ключевых документов. Отчёт с реальной ценой за 1-2 дня.</p>
+          </div>
+        </div>
+
+        <div class="process-step-7 reveal stagger-3">
+          <div class="step-num-7">3</div>
+          <div class="step-content-7">
+            <h3>Стратегия сделки</h3>
+            <p>Цена, сроки, сценарий - обсуждаем ДО старта. Без сюрпризов на полпути.</p>
+          </div>
+        </div>
+
+        <div class="process-step-7 reveal stagger-4">
+          <div class="step-num-7">4</div>
+          <div class="step-content-7">
+            <h3>Подготовка к выходу на рынок</h3>
+            <p>Фотограф, объявления на Авито / Циан / Яндекс.Недвижимость. Продающие тексты. Вы не участвуете.</p>
+          </div>
+        </div>
+
+        <div class="process-step-7 reveal stagger-1">
+          <div class="step-num-7">5</div>
+          <div class="step-content-7">
+            <h3>Показы и переговоры</h3>
+            <p>Фильтруем агентов и туристов. К вам приходят только покупатели с деньгами.</p>
+          </div>
+        </div>
+
+        <div class="process-step-7 reveal stagger-2">
+          <div class="step-num-7">6</div>
+          <div class="step-content-7">
+            <h3>Юридическая проверка покупателя</h3>
+            <p>Чистота денег, проверка документов, риски сделки. Если что-то настораживает - откажемся.</p>
+          </div>
+        </div>
+
+        <div class="process-step-7 reveal stagger-3">
+          <div class="step-num-7">7</div>
+          <div class="step-content-7">
+            <h3>Сделка</h3>
+            <p>Приходите подписать. Всё готово. Деньги - на ваш счёт.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Экспертиза (теги) -->
+  <section class="section-white">
+    <div class="container">
+      <h2 class="section-title reveal">Сложные случаи - наш профиль</h2>
+      <p class="section-subtitle reveal">Если другие риелторы сказали «не возьмёмся» - попробуйте рассказать нам.</p>
+      <div class="expertise-tags reveal">
+        <span class="expertise-tag">Консульские доверенности США и ЕС</span>
+        <span class="expertise-tag">Сделки с маткапиталом</span>
+        <span class="expertise-tag">Опека и несовершеннолетние</span>
+        <span class="expertise-tag">Военные сертификаты</span>
+        <span class="expertise-tag">Недвижимость с обременениями</span>
+        <span class="expertise-tag">Международные расчёты (SWIFT)</span>
+        <span class="expertise-tag">Сложное одобрение ипотеки</span>
+        <span class="expertise-tag">Сделки по наследству</span>
+        <span class="expertise-tag">Арестованная недвижимость</span>
+        <span class="expertise-tag">Коммерческая недвижимость</span>
+        <span class="expertise-tag">Цепочки из 3+ объектов</span>
+        <span class="expertise-tag">Квартиры, которые не продаются больше года</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Отзывы -->
+  <section class="section-light">
+    <div class="container">
+      <h2 class="section-title reveal">Что говорят клиенты</h2>
+      <div class="reviews-grid" id="reviews-grid">
+        <div class="review-card reveal stagger-1">
+          <p class="review-text">«Вы первый человек, в котором я видела, что вам не всё равно на нашу ситуацию»</p>
+          <div class="review-author">
+            <div>
+              <div class="review-name">Клиент АН Донских</div>
+              <div class="review-type">Покупка квартиры</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal stagger-2">
+          <p class="review-text">«Мне понравилось, как ты защищаешь свои интересы. Я знаю, что ты будешь защищать также мои»</p>
+          <div class="review-author">
+            <div>
+              <div class="review-name">Клиент АН Донских</div>
+              <div class="review-type">Продажа квартиры</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal stagger-3">
+          <p class="review-text">«Без вас бы мы просто сказали "да и бог с ним"»</p>
+          <div class="review-author">
+            <div>
+              <div class="review-name">Клиент АН Донских</div>
+              <div class="review-type">Сопровождение сделки</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">Расскажите что ищете</h2>
+      <p class="reveal">Перезвоню в течение дня — разберёмся что подходит. Первая консультация бесплатно.</p>
+      <div class="cta-buttons reveal">
+        <a href="contact.html" class="btn btn-primary btn-lg">Оставить заявку</a>
+        <a href="https://t.me/XSENIA_DONSKIH" target="_blank" class="btn btn-secondary btn-lg">Написать в Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-wordmark">ДОНСКИХ</span>
+            <span class="logo-sub">Недвижимость</span>
+          </a>
+          <p>Агентство недвижимости в Нижнем Новгороде. 7 лет, 300+ сделок, юрист в штате.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="about.html">О нас</a>
+          <a href="blog.html">Блог</a>
+          <a href="contact.html">Контакты</a>
+        </div>
+        <div class="footer-col">
+          <h4>Услуги</h4>
+          <a href="contact.html">Найти квартиру</a>
+          <a href="contact.html">Продать квартиру</a>
+          <a href="contact.html">Помочь с ипотекой</a>
+          <a href="contact.html">Проверить сделку</a>
+          <a href="contact.html">Купить для сдачи</a>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <a href="tel:+79867593429">+7 (986) 759-34-29</a>
+          <a href="mailto:ksdonskih@yandex.ru">ksdonskih@yandex.ru</a>
+          <a href="https://t.me/XSENIA_DONSKIH" target="_blank">Telegram</a>
+          <a href="https://t.me/XSENIA_DONSKIH" target="_blank">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>2026 АН Донских. Все права защищены.</span>
+        <span>Нижний Новгород</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Telegram -->
+  <a href="https://t.me/XSENIA_DONSKIH" target="_blank" class="float-telegram" aria-label="Telegram"><span class="tooltip">Написать в Telegram</span><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Наверх" id="back-to-top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Mobile CTA Bar -->
+  <div class="mobile-cta-bar" id="mobile-cta-bar">
+    <a href="tel:+79867593429" class="btn btn-secondary">Позвонить</a>
+    <a href="contact.html" class="btn btn-primary">Оставить заявку</a>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

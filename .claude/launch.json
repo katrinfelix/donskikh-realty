@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ksenia-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8788", "--directory", "/Users/katerina/Documents/Felix-Workspace/КЛИЕНТЫ/маркетинг/ksenia-donskih-realty/output/site"],
+      "port": 8788
+    }
+  ]
+}

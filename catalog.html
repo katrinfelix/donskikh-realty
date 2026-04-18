@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог недвижимости - Донских Недвижимость</title>
+  <meta name="description" content="Квартиры, дома и коммерческая недвижимость в Нижнем Новгороде. Фильтры по району, цене, площади. Все объекты проверены лично Ксенией Донских.">
+  <link rel="canonical" href="https://donskikh-realty.ru/catalog.html">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%238B1A1A'/><text y='.9em' font-size='80' font-family='serif' fill='white' x='10'>Д</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Каталог недвижимости - Донских Недвижимость">
+  <meta property="og:description" content="Квартиры, дома и коммерческая недвижимость в Нижнем Новгороде.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Каталог недвижимости в Нижнем Новгороде"}</script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo"><span class="logo-wordmark">ДОНСКИХ</span><span class="logo-sub">Недвижимость</span></a>
+      <nav class="nav"><a href="index.html">Главная</a><a href="catalog.html" class="active">Каталог</a><a href="about.html">О нас</a><a href="blog.html">Блог</a><a href="contact.html">Контакты</a></nav>
+      <a href="tel:+79867593429" class="header-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> +7&nbsp;(986)&nbsp;759-34-29</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu">
+    <a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="about.html">О нас</a><a href="blog.html">Блог</a><a href="contact.html">Контакты</a>
+    <a href="tel:+79867593429" style="color: var(--primary);">+7 (986) 759-34-29</a>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Каталог недвижимости</h1>
+      <p>Квартиры, дома и&nbsp;коммерческие помещения в&nbsp;Нижнем Новгороде</p>
+    </div>
+  </div>
+
+  <div class="filters-section">
+    <div class="container">
+      <form class="filters-row" id="filter-form">
+        <div class="filter-group"><label>Тип</label><select name="type"><option value="all">Все типы</option><option value="apartment">Квартира</option><option value="house">Дом</option><option value="townhouse">Таунхаус</option><option value="commercial">Коммерция</option></select></div>
+        <div class="filter-group"><label>Район</label><select name="district"><option value="all">Все районы</option><option value="nizhegorodsky">Нижегородский</option><option value="kanavinsky">Канавинский</option><option value="sovetsky">Советский</option><option value="prioksky">Приокский</option><option value="sormovsky">Сормовский</option><option value="avtozavodsky">Автозаводский</option><option value="kstovo">г. Кстово</option></select></div>
+        <div class="filter-group"><label>Комнат</label><select name="rooms"><option value="all">Любое</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select></div>
+        <div class="filter-group"><label>Цена от</label><input type="number" name="priceMin" placeholder="3 000 000" step="500000"></div>
+        <div class="filter-group"><label>Цена до</label><input type="number" name="priceMax" placeholder="20 000 000" step="500000"></div>
+      </form>
+    </div>
+  </div>
+
+  <section class="catalog-results">
+    <div class="container">
+      <div class="catalog-header">
+        <div class="catalog-count" id="catalog-count">Загрузка...</div>
+        <div class="catalog-sort"><select id="sort-select"><option value="date">По умолчанию</option><option value="price-asc">Дешевле</option><option value="price-desc">Дороже</option><option value="area-asc">Меньше площадь</option><option value="area-desc">Больше площадь</option></select></div>
+      </div>
+      <div class="properties-grid" id="catalog-grid"></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">Не нашли подходящий вариант?</h2>
+      <p class="reveal">Расскажите, что ищете, и я подберу объекты, которых нет в&nbsp;открытом доступе.</p>
+      <div class="cta-buttons reveal"><a href="contact.html" class="btn btn-primary btn-lg">Подобрать квартиру</a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-wordmark">ДОНСКИХ</span><span class="logo-sub">Недвижимость</span></a><p>Персональный риелтор в Нижнем Новгороде.</p></div>
+        <div class="footer-col"><h4>Навигация</h4><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="about.html">О нас</a><a href="blog.html">Блог</a><a href="contact.html">Контакты</a></div>
+        <div class="footer-col"><h4>Услуги</h4><a href="contact.html">Подбор квартиры</a><a href="contact.html">Продажа</a><a href="contact.html">Ипотека</a></div>
+        <div class="footer-col"><h4>Контакты</h4><a href="tel:+79867593429">+7 (986) 759-34-29</a><a href="mailto:ksdonskih@yandex.ru">ksdonskih@yandex.ru</a><a href="https://t.me/XSENIA_DONSKIH" target="_blank">Telegram</a></div>
+      </div>
+      <div class="footer-bottom"><span>2026 Донских Недвижимость</span><span>Нижний Новгород</span></div>
+    </div>
+  </footer>
+
+  <a href="https://t.me/XSENIA_DONSKIH" target="_blank" class="float-telegram" aria-label="Telegram"><span class="tooltip">Написать в Telegram</span><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+  <button class="back-to-top" aria-label="Наверх" id="back-to-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+  <div class="mobile-cta-bar" id="mobile-cta-bar"><a href="tel:+79867593429" class="btn btn-secondary">Позвонить</a><a href="contact.html" class="btn btn-primary">Записаться</a></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const form = document.getElementById('filter-form');
+      if (!form) return;
+      for (const [key, val] of params.entries()) {
+        const el = form.querySelector('[name="' + key + '"]');
+        if (el) el.value = val;
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#E8E0D8"/>
+  <!-- House silhouette -->
+  <g opacity="0.25">
+    <!-- Roof -->
+    <polygon points="400,120 240,260 560,260" fill="#8B1A1A"/>
+    <!-- Body -->
+    <rect x="270" y="260" width="260" height="160" fill="#8B1A1A"/>
+    <!-- Door -->
+    <rect x="360" y="330" width="80" height="90" fill="#E8E0D8"/>
+    <!-- Window left -->
+    <rect x="295" y="290" width="55" height="50" fill="#E8E0D8"/>
+    <!-- Window right -->
+    <rect x="450" y="290" width="55" height="50" fill="#E8E0D8"/>
+    <!-- Chimney -->
+    <rect x="470" y="140" width="30" height="80" fill="#8B1A1A"/>
+    <!-- Key shape -->
+    <circle cx="600" cy="200" r="38" fill="none" stroke="#8B1A1A" stroke-width="12"/>
+    <rect x="624" y="196" width="55" height="12" fill="#8B1A1A"/>
+    <rect x="657" y="208" width="12" height="20" fill="#8B1A1A"/>
+    <rect x="641" y="208" width="12" height="14" fill="#8B1A1A"/>
+  </g>
+  <!-- Brand bar -->
+  <rect x="0" y="440" width="800" height="60" fill="#8B1A1A"/>
+  <!-- Text -->
+  <text x="400" y="390" font-family="Georgia, serif" font-size="22" fill="#8B1A1A" text-anchor="middle" opacity="0.6">Фото по запросу</text>
+  <text x="400" y="472" font-family="Georgia, serif" font-size="20" fill="white" text-anchor="middle" letter-spacing="3">АН ДОНСКИХ</text>
+  <text x="400" y="492" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="1">НЕДВИЖИМОСТЬ · НИЖНИЙ НОВГОРОД</text>
+</svg>
