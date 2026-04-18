@@ -2826,7 +2826,7 @@ textarea:focus-visible {
 /* ── Fullscreen НН hero ── */
 .hero-fullscreen {
   position: relative;
-  background: #0a0404;
+  background: url('images/nn-sunsets/nn-sunset-02.jpg') center 40% / cover no-repeat;
   border-bottom: none;
   padding: 0;
   overflow: hidden;
