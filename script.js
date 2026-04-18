@@ -113,8 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const sortSelect = document.getElementById('sort-select');
   const countEl = document.getElementById('catalog-count');
 
-  if (catalogGrid && filterForm) {
+  if (catalogGrid) {
     function getFilters() {
+      if (!filterForm) return { type: 'all', district: 'all', rooms: 'all', priceMin: '', priceMax: '' };
       const formData = new FormData(filterForm);
       return {
         type: formData.get('type') || 'all',
@@ -146,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       catalogGrid.innerHTML = results.map((p, i) => renderPropertyCard(p, i)).join('');
-      // Animate new cards
       setTimeout(() => {
         catalogGrid.querySelectorAll('.reveal:not(.visible)').forEach(el => {
           el.classList.add('visible');
@@ -154,8 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 50);
     }
 
-    filterForm.addEventListener('change', renderCatalog);
-    filterForm.addEventListener('input', debounce(renderCatalog, 300));
+    if (filterForm) {
+      filterForm.addEventListener('change', renderCatalog);
+      filterForm.addEventListener('input', debounce(renderCatalog, 300));
+    }
     if (sortSelect) sortSelect.addEventListener('change', renderCatalog);
 
     renderCatalog();
