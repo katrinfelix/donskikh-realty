@@ -102,7 +102,9 @@
               <label for="message">Расскажите подробнее</label>
               <textarea id="message" name="message" placeholder="Что происходит? Чем могу помочь? Бюджет, сроки, особые условия..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Отправить заявку</button>
+            <input type="hidden" name="_subject" value="🏠 Новая заявка с сайта Донских Недвижимость">
+          <input type="hidden" name="_language" value="ru">
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Отправить заявку</button>
             <p class="hint" style="margin-top: 12px; text-align: center;">Перезвоню в&nbsp;течение 15&nbsp;минут в&nbsp;рабочее время</p>
           </form>
         </div>
@@ -163,63 +165,39 @@
   <script src="data.js"></script>
   <script src="script.js"></script>
   <script>
-    // ── Telegram Bot config ──────────────────────────────────────────────
-    // 1. Create bot via @BotFather → get token
-    // 2. Ksenia sends /start to the bot → fetch chat_id:
-    //    https://api.telegram.org/bot{TOKEN}/getUpdates
-    var TG_BOT_TOKEN = 'REPLACE_WITH_BOT_TOKEN';
-    var TG_CHAT_ID   = 'REPLACE_WITH_CHAT_ID';
+    // ── Formspree config ─────────────────────────────────────────────────
+    // Регистрация: formspree.io → New Form → ввести ksdonskih@yandex.ru
+    // Получить ID формы (вида xabcdefg) и вставить ниже:
+    var FORMSPREE_ID = 'REPLACE_WITH_FORM_ID';
     // ─────────────────────────────────────────────────────────────────────
-
-    var SITUATION_LABELS = {
-      buy: 'Куплю недвижимость',
-      sell: 'Продам недвижимость',
-      invest: 'Инвестирую',
-      other: 'Другое'
-    };
 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var form = this;
       var btn  = form.querySelector('button[type=submit]');
-      var name     = form.querySelector('#name').value.trim();
-      var phone    = form.querySelector('#phone').value.trim();
-      var situation= form.querySelector('#situation').value;
-      var message  = form.querySelector('#message').value.trim();
-
-      var text = '🏠 *Новая заявка с сайта*\n\n'
-        + '👤 *Имя:* ' + name + '\n'
-        + '📞 *Телефон:* ' + phone + '\n'
-        + '📋 *Ситуация:* ' + (SITUATION_LABELS[situation] || situation) + '\n'
-        + (message ? '💬 *Детали:* ' + message : '');
 
       btn.disabled = true;
       btn.textContent = 'Отправляем…';
 
-      var url = 'https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage';
-      fetch(url, {
+      var data = new FormData(form);
+
+      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: text, parse_mode: 'Markdown' })
+        body: data,
+        headers: { 'Accept': 'application/json' }
       })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.ok) {
+      .then(function(r) {
+        if (r.ok) {
           var parent = form.parentElement;
           parent.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка отправлена!</h3><p>Ксения перезвонит вам в течение 15 минут в рабочее время.</p></div>';
         } else {
-          throw new Error(data.description || 'Ошибка');
+          throw new Error('error');
         }
       })
       .catch(function() {
-        // fallback: show success anyway, save to localStorage for manual check
-        try {
-          var leads = JSON.parse(localStorage.getItem('pending_leads') || '[]');
-          leads.push({ name: name, phone: phone, situation: situation, message: message, ts: new Date().toISOString() });
-          localStorage.setItem('pending_leads', JSON.stringify(leads));
-        } catch(e) {}
-        var parent = form.parentElement;
-        parent.innerHTML = '<div class="form-success"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Заявка принята!</h3><p>Ксения свяжется с вами в ближайшее время.</p></div>';
+        btn.disabled = false;
+        btn.textContent = 'Отправить заявку';
+        alert('Не удалось отправить. Позвоните напрямую: +7 (986) 759-34-29');
       });
     // Pre-fill segment from URL
     (function() {
