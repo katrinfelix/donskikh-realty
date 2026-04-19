@@ -3,4 +3,4 @@ Allow: /
 Disallow: /article.html?*
 Disallow: /object.html?*
 
-Sitemap: https://donskikh-realty.ru/sitemap.xml
+Sitemap: https://donreal.ru/sitemap.xml
