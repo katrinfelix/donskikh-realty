@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-$TG_TOKEN   = '8684180896:AAENpJJVU_6jQhwdLTjUE-sxWvMb-YF49aE';
+$TG_TOKEN   = '8684180896:AAH5WsIK3Bg5fqbx3UmdrCXUNe1_JTdEnSA';
 $TG_CHAT_ID = '6213426240';
 
 $input = json_decode(file_get_contents('php://input'), true);
