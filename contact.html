@@ -178,9 +178,6 @@
   <script src="data.js"></script>
   <script src="script.js"></script>
   <script>
-    var TG_TOKEN   = '8684180896:AAENpJJVU_6jQhwdLTjUE-sxWvMb-YF49aE';
-    var TG_CHAT_ID = '6213426240';
-
     var SITUATIONS = { buy: 'Куплю', sell: 'Продам', invest: 'Инвестирую', other: 'Другое' };
 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -195,16 +192,10 @@
       btn.disabled = true;
       btn.textContent = 'Отправляем…';
 
-      var text = '🏠 *Новая заявка с сайта*\n\n'
-        + '👤 ' + name + '\n'
-        + '📞 ' + phone + '\n'
-        + '📋 ' + (SITUATIONS[situation] || situation)
-        + (message ? '\n💬 ' + message : '');
-
-      fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+      fetch('send.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: text, parse_mode: 'Markdown' })
+        body: JSON.stringify({ name: name, phone: phone, situation: situation, message: message })
       })
       .then(function(r) { return r.json(); })
       .then(function(d) {
